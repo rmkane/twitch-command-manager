@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+
+    <title>Nightbot - Command Tool</title>
+
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/toastr/build/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-messages/angular-messages.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-cache/dist/angular-cache.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-material/angular-material.min.js"></script>
+    <script type="text/javascript" src="node_modules/api-check/dist/api-check.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-formly/dist/formly.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>
+    <script type="text/javascript" src="node_modules/autosize/dist/autosize.min.js"></script>
+    <script type="text/javascript" src="node_modules/toastr/build/toastr.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.outerhtml.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+  </head>
+  <body ng-app="formlyApp" ng-controller="MainController as vm" class="ng-scope">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <md-toolbar layout="row">
+            <div class="md-toolbar-tools">
+              <h2>Command List</h2>
+            </div>
+          </md-toolbar>
+          <md-content>
+            <md-list class="make-scrollable" flex>
+              <md-subheader class="md-no-sticky">Saved Commands</md-subheader>
+              <md-list-item class="md-3-line" ng-repeat="command in vm.commandList track by $index" ng-click="vm.onCommandSelect(this, command)">
+                <div class="md-list-item-text">
+                  <h3>{{ command.name }}</h3>
+                  <h4>{{ command.description }}</h4>
+                  <p>{{ command.userLevel || 'everyone' }}</p>
+                  <p>{{ command.cooldown || 0 }} seconds</p>
+                </div>
+              </md-list-item>
+            </md-list>
+          </md-content>
+          <button type="button" class="btn btn-primary" ng-click="vm.onImport(this)"><i class="fa fa-folder-o"></i> Import</button>
+          <button type="button" class="btn btn-primary" ng-click="vm.onExport(this)"><i class="fa fa-save"></i> Export</button>   
+        </div>
+        <div class="col-md-8">
+          <form novalidate>
+            <h1>{{vm.applicationTitle}}</h1>
+            <formly-form model="vm.command" fields="vm.commandFields" form="vm.commandForm">
+              <button type="submit" class="btn btn-primary" ng-disabled="vm.commandForm.$invalid" ng-click="vm.onSubmit(this)">Submit</button>
+            </formly-form>
+          </form>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" id="toast" />
+  </body>
+</html>

@@ -1,0 +1,29 @@
+.container {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+  -webkit-box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
+  height: 95vh;
+}
+
+md-list.make-scrollable {
+  height : 70vh; // Or any other height you wish
+  overflow-y: scroll;
+}
+
+#toast {
+  width: 100%;
+  color: #000;
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+    background-color: #E7E7E7;
+    color: #222;
+}
+
+.md-subheader.md-default-theme, .md-subheader {
+    color: #444;
+    background-color: #F0F0F0;
+}

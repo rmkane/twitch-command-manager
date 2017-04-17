@@ -1,0 +1,6 @@
+{
+  "name": "twitch-command-manager",
+  "main": "index.js",
+  "keywords": [ "twitch", "bot", "command", "manager" ],
+  "ignore": [ "**/.*", "node_modules", "bower_components", "test", "tests" ]
+}
